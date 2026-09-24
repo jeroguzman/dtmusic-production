@@ -1,4 +1,5 @@
 import type { Artist, Package, Promotion, Video } from '@/data/types'
+import { PLACEHOLDER_IMAGE } from '@/lib/placeholder'
 
 const API_URL = import.meta.env.VITE_API_URL
 
@@ -99,7 +100,7 @@ function mapArtist(a: ApiArtist): Artist {
     name: a.name,
     tagline: a.tagline,
     logoImage: a.logo_image ?? undefined,
-    heroImage: a.hero_image ?? '',
+    heroImage: a.hero_image || PLACEHOLDER_IMAGE,
     accentColor: a.accent_color,
     socials: {
       facebook: a.facebook || undefined,

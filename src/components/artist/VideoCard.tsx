@@ -15,8 +15,8 @@ export function VideoCard({
 }) {
   if (variant === 'tile') {
     return (
-      <button type="button" onClick={() => onClick?.(video)} className={cn('shrink-0 text-left', className ?? 'w-40')}>
-        <div className="relative h-24 overflow-hidden rounded-xl">
+      <button type="button" onClick={() => onClick?.(video)} className={cn('block w-full text-left', className)}>
+        <div className="relative aspect-square w-full overflow-hidden rounded-xl">
           <img src={video.thumbnail} alt={video.title} className="h-full w-full object-cover" />
           <div className="absolute inset-0 flex items-center justify-center bg-black/20">
             <Play className="size-8 fill-white text-white" />

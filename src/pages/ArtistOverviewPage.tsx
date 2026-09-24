@@ -6,6 +6,8 @@ import { HeroBanner } from '@/components/artist/HeroBanner'
 import { VideoCard } from '@/components/artist/VideoCard'
 import { VideoModal } from '@/components/artist/VideoModal'
 import { Button } from '@/components/ui/button'
+import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel'
+import { CarouselDots } from '@/components/ui/carousel-dots'
 import type { Video } from '@/data/types'
 import { useArtist } from '@/hooks/useArtist'
 import { formatMXN } from '@/lib/format'
@@ -38,11 +40,16 @@ export default function ArtistOverviewPage() {
             <ChevronRight className="size-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {videos.map((video) => (
-            <VideoCard key={video.id} video={video} variant="tile" className="w-full" onClick={setPlayingVideo} />
-          ))}
-        </div>
+        <Carousel opts={{ align: 'start' }} className="space-y-3">
+          <CarouselContent>
+            {videos.map((video) => (
+              <CarouselItem key={video.id} className="basis-[42%] sm:basis-1/4">
+                <VideoCard video={video} variant="tile" onClick={setPlayingVideo} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselDots />
+        </Carousel>
       </section>
 
       <section className="space-y-3 px-5 pt-8">
